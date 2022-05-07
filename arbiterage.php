@@ -45,6 +45,8 @@ function Arbitrge($want_arbitrage_percent)
     $exchange = Exclude($exchange,"Changekon","DAI");
     // Ompfinex: coin DAI Dosn't exist;
     $exchange = Exclude($exchange,"Ompfinex","DAI");
+    // Wallex: coin DAI Dosn't exist;
+    $exchange = Exclude($exchange,"Wallex","DAI");
 
     //detect gap
     $exchange = Gap($exchange,$want_arbitrage_percent);

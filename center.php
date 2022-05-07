@@ -56,9 +56,9 @@
 
         // echo "<br> Number of Global Exchange: " . sizeof($GLOBALS['exchange']);
 
-        echo "<pre>";
-        print_r($exchange);
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($exchange);
+        // echo "</pre>";
 
 
         
