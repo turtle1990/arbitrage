@@ -18,6 +18,7 @@
         require_once("exchanges/nobitex.php");
         require_once("exchanges/ramzinex.php");
         require_once("exchanges/dollarkadeh.php");
+        require_once("exchanges/bitbarg.php");
         //require_once("exchanges/ompfinex.php");
         include('plugin/simple_html_dom/simple_html_dom.php'); //work with html dom.
         require_once('fee.php');
@@ -28,8 +29,8 @@
 
         $time_start = microtime(true); 
 
-        $coins = array("USDT","XRP","DOT","XLM","TRX","BNB","MATIC","LTC","EOS","DOGE","ADA","DAI");
-        // $coins = array("USDT");
+        // $coins = array("USDT","XRP","DOT","XLM","TRX","BNB","MATIC","LTC","EOS","DOGE","ADA","DAI");
+        $coins = array("USDT");
         
         Changekon("ALLTYPE");// one ajax and get all cryptocurrency
         foreach ($coins as $coin){
@@ -38,12 +39,14 @@
             // Changekon($coin);
             // Exnovin($coin);
             Nobitex($coin);
-            Ramzinex($coin);
+            // Ramzinex($coin);
+            Bitbarg($coin);
             // Ompfinex($coin);
             // Dollarkadeh($coin);
             Arbitrge(0.68);
-            unset($exchange);
+            // unset($exchange);
         }
+        
 
         $time_end = microtime(true);
         $execution_time = ($time_end - $time_start);
@@ -51,9 +54,9 @@
 
         // echo "<br> Number of Global Exchange: " . sizeof($GLOBALS['exchange']);
 
-        // echo "<pre>";
-        // print_r($exchange);
-        // echo "</pre>";
+        echo "<pre>";
+        print_r($exchange);
+        echo "</pre>";
 
 
         
