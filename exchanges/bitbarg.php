@@ -1,6 +1,6 @@
 <?php
 
-function Nobitex($coin){
+function Bitbarg($coin){
 
     global $exchange;
     $exchange_name = "Bitbarg";
