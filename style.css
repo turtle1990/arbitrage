@@ -1,0 +1,28 @@
+body,html{
+    font-size: 18px;
+}
+
+.red{
+    color: red;
+}
+
+.green{
+    color: green;
+}
+
+#example_filter{
+    display: none;
+}
+
+table{
+    font-size: 16px!important;
+}
+
+.form-group {
+    margin-bottom: 6px;
+}
+
+.form-control {
+    font-size: 12px;
+    height: 30px;
+}

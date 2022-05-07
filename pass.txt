@@ -1,0 +1,8 @@
+database: mjtbir_arbitrage
+user db: mjtbir_mojtaba
+pass: )k+$9Aa%}P6F
+
+$serverName = "localhost";
+$userName = "mjtbir_mojtaba";
+$password = ")k+$9Aa%}P6F";
+$dbName = "mjtbir_arbitrage";
