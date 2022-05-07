@@ -125,6 +125,24 @@ function MinimumBuyOrderArrayRIAL($orders){
     }
 }
 
+function MinimumBuyOrderArrayWallexRIAL($orders){
+    global $minimum_buy;
+    $plus = 0;
+    $amount_coin = 0;
+
+    for($i=0;$i < sizeof($orders);$i++){
+
+        $amount_coin += $orders[$i]->quantity;
+        $plus += ($orders[$i]->price * $amount_coin) * 10;
+        // echo "<br> Price: " .  $orders[$i][0] . " A: $amount_coin    P: $plus ";
+
+        if($plus > $minimum_buy){
+            return $arr = array($orders[$i]->price, $amount_coin);
+            break;
+        }
+    }
+}
+
 function Str_after($str, $search)
 {
     return $search === '' ? $str : array_reverse(explode($search, $str, 2))[0];

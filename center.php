@@ -19,6 +19,7 @@
         require_once("exchanges/ramzinex.php");
         require_once("exchanges/dollarkadeh.php");
         require_once("exchanges/bitbarg.php");
+        require_once("exchanges/wallex.php");
         //require_once("exchanges/ompfinex.php");
         include('plugin/simple_html_dom/simple_html_dom.php'); //work with html dom.
         require_once('fee.php');
@@ -41,6 +42,7 @@
             Nobitex($coin);
             // Ramzinex($coin);
             Bitbarg($coin);
+            Wallex($coin);
             // Ompfinex($coin);
             // Dollarkadeh($coin);
             Arbitrge(0.68);
