@@ -10,6 +10,28 @@ function Bitbarg($coin){
     switch($coin){
         case "USDT" : $api_url = "https://api.bitbarg.me/api/v1/currencies";
             break;
+        case "XRP" : $api_url = NULL;
+            break;
+        case "DOT" : $api_url = NULL;
+            break;
+        case "DOGE" : $api_url = NULL;
+            break;
+        case "XLM" : $api_url = NULL;
+            break;
+        case "EOS" : $api_url = NULL;
+            break;
+        case "TRX" : $api_url = NULL;
+            break;
+        case "ADA" : $api_url = NULL;
+            break;
+        case "BNB" : $api_url = NULL;
+            break;
+        case "MATIC" : $api_url = NULL;
+            break;
+        case "DAI" : $api_url = NULL;
+            break;
+        case "LTC" : $api_url = NULL;
+            break;
 
         default : $api_url = Telegram("Bitbarg: Invalid Input!");
     }

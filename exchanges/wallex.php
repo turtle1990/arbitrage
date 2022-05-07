@@ -36,9 +36,9 @@ function Wallex($coin){
 
     $response_data = json_decode(file_get_contents($api_url));
     
-    echo "<br>$exchange_name<br><pre>";
-    print_r($response_data->result);
-    echo "</pre>";
+    // echo "<br>$exchange_name<br><pre>";
+    // print_r($response_data->result);
+    // echo "</pre>";
 
     $best_seller = MinimumBuyOrderArrayWallexRIAL($response_data->result->ask)[0];
     $amount_best_seller = MinimumBuyOrderArrayWallexRIAL($response_data->result->ask)[1];
