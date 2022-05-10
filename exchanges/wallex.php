@@ -34,9 +34,11 @@ function Wallex($coin){
         default : $api_url = Telegram("Wallex: Invalid Input!");
     }
 
-    if ($api_url != NULL ){
+    $orders = @file_get_contents($api_url);
 
-        $response_data = json_decode(file_get_contents($api_url));
+    if($orders !== FALSE && $api_url != NULL){
+
+        $response_data = json_decode($orders);
         
         // echo "<br>$exchange_name<br><pre>";
         // print_r($response_data->result);

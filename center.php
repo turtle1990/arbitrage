@@ -9,7 +9,6 @@
     <body>
 
     <?php
-        header('Access-Control-Allow-Headers: Content-Type');
         require_once("global.php");
         require_once("exchanges/tokenbaz.php");
         require_once("exchanges/bitimen.php");
@@ -20,7 +19,8 @@
         require_once("exchanges/dollarkadeh.php");
         require_once("exchanges/bitbarg.php");
         require_once("exchanges/wallex.php");
-        //require_once("exchanges/ompfinex.php");
+        require_once("exchanges/rabincash.php");
+        require_once("exchanges/ompfinex.php");
         include('plugin/simple_html_dom/simple_html_dom.php'); //work with html dom.
         require_once('fee.php');
         require_once("Tel_bot.php");
@@ -35,16 +35,17 @@
         
         Changekon("ALLTYPE");// one ajax and get all cryptocurrency
         foreach ($coins as $coin){
-            // Tokenbaz($coin);
-            // Bitimen($coin);
-            // Changekon($coin);
-            // Exnovin($coin);
+            Tokenbaz($coin);
+            Bitimen($coin);
+            Changekon($coin);
+            Exnovin($coin);
             Nobitex($coin);
-            // Ramzinex($coin);
+            Ramzinex($coin);
             Bitbarg($coin);
             Wallex($coin);
-            // Ompfinex($coin);
-            // Dollarkadeh($coin);
+            Rabincash($coin);
+            Ompfinex($coin);
+            Dollarkadeh($coin);
             Arbitrge(0.68);
             unset($exchange);
         }

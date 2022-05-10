@@ -34,8 +34,11 @@ function Ompfinex($coin){
         default : $api_url = Telegram("Ompfinex: Invalid Input!");
     }
 
-    $response_data = json_decode(file_get_contents($api_url));
-    if($response_data != NULL){
+    $orders = @file_get_contents($api_url);
+
+    if($orders !== FALSE && $api_url != NULL){
+
+    $response_data = json_decode($orders);
 
         usort($response_data->data, 'ComparatorType');
         usort($response_data->data, 'ComparatorPrice');

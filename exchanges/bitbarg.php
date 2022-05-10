@@ -40,9 +40,9 @@ function Bitbarg($coin){
 
         $response_data = json_decode(file_get_contents($api_url));
         
-        echo "<br>$exchange_name<br><pre>";
-        print_r($response_data->result->meta->prices);
-        echo "</pre>";
+        // echo "<br>$exchange_name<br><pre>";
+        // print_r($response_data->result->meta->prices);
+        // echo "</pre>";
 
         $best_seller = intval($response_data->result->meta->prices->buy) * 10;
         $amount_best_seller = 0;
@@ -50,7 +50,7 @@ function Bitbarg($coin){
         $best_buyyer = intval($response_data->result->meta->prices->sell) * 10;
         $amount_best_buyyer = 0;
 
-        echo "<br>Bitbarg: Best seller: $best_seller , Amount: $amount_best_seller <br>Best buyyer: $best_buyyer , Amount: $amount_best_buyyer";
+        // echo "<br>Bitbarg: Best seller: $best_seller , Amount: $amount_best_seller <br>Best buyyer: $best_buyyer , Amount: $amount_best_buyyer";
 
 
         $i = sizeof($exchange);
