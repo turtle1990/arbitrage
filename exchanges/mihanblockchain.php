@@ -62,10 +62,19 @@ function Mihanblockchain($coin){
         foreach($response_data->Exchanges as $exchange_name){
             echo " ";
             $index = searchByExchangeName($exchange_name->id, $exchange_finance);
+            $i = sizeof($exchange);
 
             if ($index == "Not find"){
-
                 echo "<br> Not Find: " . $exchange_name->id;
+                $exchange[$i][0] = $exchange_name->id;
+                $exchange[$i][1] = $coin;
+                $exchange[$i][2] = intval($exchange_name->best_asks_price * 10);
+                $exchange[$i][3] = intval($exchange_name->best_bids_price * 10);
+                $exchange[$i][4] = 0;
+                $exchange[$i][5] = 0;
+                $exchange[$i][6] = 0; //Flag
+                $exchange[$i][7] = 0; //Gap
+                $exchange[$i][8] = Fee_table($coin);
 
             }else{
 
