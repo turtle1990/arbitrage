@@ -28,10 +28,10 @@ function searchByExchangeName($EXCHANGE_NAME, $array) {
         // echo "<br> =>>> " . $val['EXCHANGE_NAME'] . " Table: " . $EXCHANGE_NAME;
         // echo "<br> ->>> " . strcasecmp($val['EXCHANGE_NAME'] , $EXCHANGE_NAME);
         if (strcasecmp($val['EXCHANGE_NAME'] , $EXCHANGE_NAME) == 0) {
-            echo "<br> THIS: " . $val['EXCHANGE_NAME'];
-            echo "<br> AND THIS " .  $EXCHANGE_NAME;
-            echo "<br> KEY: $key";
-            return $key;
+            // echo "<br> THIS: " . $val['EXCHANGE_NAME'];
+            // echo "<br> AND THIS " .  $EXCHANGE_NAME;
+            // echo "<br> KEY: $key";
+            return "$key";
         }
     }
     return "Not find";
