@@ -69,19 +69,20 @@
             // Ompfinex($coin);
             // Dollarkadeh($coin);
             // Arbitrge(0.68);
-            unset($exchange);
+            // unset($exchange);
         }
         
+        echo "<br> Number of Global Exchange: " . sizeof($GLOBALS['exchange']);
+
+        echo "<pre>";
+        print_r($exchange);
+        echo "</pre>";
 
         $time_end = microtime(true);
         $execution_time = ($time_end - $time_start);
         echo '<b>Total Execution Time:</b> '.$execution_time.' Secs';
 
-        // echo "<br> Number of Global Exchange: " . sizeof($GLOBALS['exchange']);
-
-        // echo "<pre>";
-        // print_r($exchange);
-        // echo "</pre>";
+        
 
     ?>
     </body>
