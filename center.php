@@ -11,6 +11,7 @@
     <?php
         require_once("global.php");
         require_once("exchanges/tokenbaz.php");
+        require_once("exchanges/mihanblockchain.php");
         require_once("exchanges/bitimen.php");
         require_once("exchanges/changekon.php");
         require_once("exchanges/exnovin.php");
@@ -28,25 +29,46 @@
 
         global $exchange;
 
+        // output data of each row
+        ////////////////////////////// DB connection  /////////////////////////
+        
+        $sql = "SELECT * FROM `available`";
+        $result = mysqli_query(Db_conn(),$sql) or die("Error: ".mysqli_error(Db_conn()));
+        
+        $i = 0;
+        while($row = $result->fetch_assoc()){
+            $exchange_finance[$i] = $row;
+            $i++;
+        }
+
+        Db_conn()->close();
+
+        // echo "<pre>";
+        // print_r($exchange_finance);
+        // echo "</pre>";
+
+        //////////////////////////////////////////////////////////////////////////
+
         $time_start = microtime(true); 
 
-        $coins = array("USDT","XRP","DOT","XLM","TRX","BNB","MATIC","LTC","EOS","DOGE","ADA","DAI");
-        // $coins = array("USDT");
+        // $coins = array("USDT","XRP","DOT","XLM","TRX","BNB","MATIC","LTC","EOS","DOGE","ADA","DAI");
+        $coins = array("USDT");
         
         Changekon("ALLTYPE");// one ajax and get all cryptocurrency
         foreach ($coins as $coin){
-            Tokenbaz($coin);
-            Bitimen($coin);
-            Changekon($coin);
-            Exnovin($coin);
-            Nobitex($coin);
-            Ramzinex($coin);
-            Bitbarg($coin);
-            Wallex($coin);
-            Rabincash($coin);
-            Ompfinex($coin);
-            Dollarkadeh($coin);
-            Arbitrge(0.68);
+            // Tokenbaz($coin);
+            Mihanblockchain($coin);
+            // Bitimen($coin);
+            // Changekon($coin);
+            // Exnovin($coin);
+            // Nobitex($coin);
+            // Ramzinex($coin);
+            // Bitbarg($coin);
+            // Wallex($coin);
+            // Rabincash($coin);
+            // Ompfinex($coin);
+            // Dollarkadeh($coin);
+            // Arbitrge(0.68);
             unset($exchange);
         }
         
@@ -60,9 +82,6 @@
         // echo "<pre>";
         // print_r($exchange);
         // echo "</pre>";
-
-
-        
 
     ?>
     </body>

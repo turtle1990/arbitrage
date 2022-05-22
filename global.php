@@ -3,7 +3,7 @@
 ////////////////////////////// Variables
 
 $amount_buy = 500000000; //Rials
-$minimum_buy = $amount_buy * 0.02; // 10,000,000 Rials
+$minimum_buy = $amount_buy * 0.02; // 100,000,000 Rials
 
 
 ////////////////////////////// Functions
@@ -21,6 +21,20 @@ function GetIndexExchangeByName($EXCHANGE_NAME) {
     }
     return NULL;
     
+}
+
+function searchByExchangeName($EXCHANGE_NAME, $array) {
+    foreach ($array as $key => $val) {
+        // echo "<br> =>>> " . $val['EXCHANGE_NAME'] . " Table: " . $EXCHANGE_NAME;
+        // echo "<br> ->>> " . strcasecmp($val['EXCHANGE_NAME'] , $EXCHANGE_NAME);
+        if (strcasecmp($val['EXCHANGE_NAME'] , $EXCHANGE_NAME) == 0) {
+            echo "<br> THIS: " . $val['EXCHANGE_NAME'];
+            echo "<br> AND THIS " .  $EXCHANGE_NAME;
+            echo "<br> KEY: $key";
+            return $key;
+        }
+    }
+    return "Not find";
 }
 
 function MinimumBuyOrderObject($orders){
