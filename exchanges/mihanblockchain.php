@@ -1,11 +1,20 @@
 <?php
 
-function Nobitex($coin){
+function Mihanblockchain($coin){
+
+    $html_site = file_get_html("https://mihanblockchain.com/exchange-prices");
+    $js_finder = substr($html_site, strpos($html_site, 'https://mihanblockchain.com/wp-content/cache/min/1/')+51, 32);
+
+    $js = file_get_html("https://mihanblockchain.com/wp-content/cache/min/1/$js_finder.js");
+    $activator = substr($js, strpos($js, '"Nonce":"')+9, 10);
+
 
     global $exchange;
+    global $exchange_finance;
     $exchange_name = "Mihanblockchain";
+    
+    $api_url = "https://mihanblockchain.com/wp-admin/admin-ajax.php?action=ajax_get_best_exchanges_orders&nonce=". $activator ."&coin=";
 
-    $api_url = "https://mihanblockchain.com/wp-admin/admin-ajax.php?action=ajax_get_best_exchanges_orders&nonce=982cf09fbf&coin=";
 
     switch($coin){
         case "USDT" : $api_url .= "usdt";
@@ -36,15 +45,35 @@ function Nobitex($coin){
         default : $api_url = Telegram("Mihanblckchain: Invalid Input!");
     }
 
-    $orders = @file_get_contents($api_url);
+    // print $api_url;
+
+    $orders = file_get_contents($api_url);
+
+    // print_r ($orders);
 
     if($orders !== FALSE){
 
         $response_data = json_decode($orders);
         
         echo "<br>Mihanblockchain<br><pre>";
-        print_r($response_data);
+        print_r($response_data->Exchanges);
         echo "</pre>";
+
+        foreach($response_data->Exchanges as $exchange_name){
+            echo " ";
+            $index = searchByExchangeName($exchange_name->id, $exchange_finance);
+
+            if ($index == "Not find"){
+
+                echo "<br> Not Find: " . $exchange_name->id;
+
+            }else{
+
+                echo "<br> FIND: " . $exchange_finance[$index]['ID'] . " Name: " . $exchange_finance[$index]['EXCHANGE_NAME'];
+
+            }
+        }
+    }
 
 }
 
