@@ -10,26 +10,10 @@ function Arbitrge($want_arbitrage_percent)
     global $amount_buy;
     global $minimum_buy;
     global $exchange;
+    global $exchange_finance;
     $exchange_origin_result= NULL;
     $exchange_destination_result= NULL;
     $origins = $destinations = "";
-
-    // output data of each row
-    ////////////////////////////// DB connection  /////////////////////////
-    
-    $sql = "SELECT * FROM `available`";
-    $result = mysqli_query(Db_conn(),$sql) or die("Error: ".mysqli_error(Db_conn()));
-    
-    $i = 0;
-    while($row = $result->fetch_assoc()){
-        $exchange_finance[$i] = $row;
-        $i++;
-    }
-
-    Db_conn()->close();
-    
-
-    //////////////////////////////////////////////////////////////////////////
 
     // echo "<pre>";
     // var_dump($exchange);
@@ -251,7 +235,7 @@ function Arbitrge($want_arbitrage_percent)
                     " ) " .
                     $best_buyyers .
                     " - " .
-                    $exchange_destination_result[$i][5] .
+                    $exchange_destination_result[$i][4] .
                     "\n";
 
                 }elseif($exchange[$i][7] == 1){
@@ -262,7 +246,7 @@ function Arbitrge($want_arbitrage_percent)
                     " ) " .
                     $best_buyyers .
                     " - " .
-                    $exchange_destination_result[$i][5] .
+                    $exchange_destination_result[$i][4] .
                     "\n";
                 }
             }       
@@ -318,15 +302,6 @@ function percent_Arbitrage($high_number,$low_number){
     // echo "<br> High_number: $high_number - Low_number: $low_number";
     $current_arbiterage = 100 - ( $low_number * 100 ) / $high_number;
     return trim(number_format($current_arbiterage, 2));
-}
-
-function searchByExchangeName($EXCHANGE_NAME, $array) {
-    foreach ($array as $key => $val) {
-        if ($val['EXCHANGE_NAME'] === $EXCHANGE_NAME) {
-            return $key;
-        }
-    }
-    return null;
 }
 
 ?>
