@@ -24,17 +24,36 @@ function GetIndexExchangeByName($EXCHANGE_NAME) {
 }
 
 function searchByExchangeName($EXCHANGE_NAME, $array) {
-    foreach ($array as $key => $val) {
-        // echo "<br> =>>> " . $val['EXCHANGE_NAME'] . " Table: " . $EXCHANGE_NAME;
-        // echo "<br> ->>> " . strcasecmp($val['EXCHANGE_NAME'] , $EXCHANGE_NAME);
-        if (strcasecmp($val['EXCHANGE_NAME'] , $EXCHANGE_NAME) == 0) {
-            // echo "<br> THIS: " . $val['EXCHANGE_NAME'];
-            // echo "<br> AND THIS " .  $EXCHANGE_NAME;
-            // echo "<br> KEY: $key";
-            return "$key";
+
+    if(isset($array[0]['EXCHANGE_NAME'])){
+
+        foreach ($array as $key => $val) {
+            // echo "<br> =>>> " . $val['EXCHANGE_NAME'] . " Table: " . $EXCHANGE_NAME;
+            // echo "<br> ->>> " . strcasecmp($val['EXCHANGE_NAME'] , $EXCHANGE_NAME);
+            if (strcasecmp($val['EXCHANGE_NAME'] , $EXCHANGE_NAME) == 0) {
+                // echo "<br> THIS: " . $val['EXCHANGE_NAME'];
+                // echo "<br> AND THIS " .  $EXCHANGE_NAME;
+                // echo "<br> KEY: $key";
+                return "$key";
+            }
         }
+        return "Not find";
+    }elseif(isset($array[0][0])){
+
+        foreach ($array as $key => $val) {
+            // echo "<br> =>>> " . $val['EXCHANGE_NAME'] . " Table: " . $EXCHANGE_NAME;
+            // echo "<br> ->>> " . strcasecmp($val['EXCHANGE_NAME'] , $EXCHANGE_NAME);
+            if (strcasecmp($val[0] , $EXCHANGE_NAME) == 0) {
+                // echo "<br> THIS: " . $val['EXCHANGE_NAME'];
+                // echo "<br> AND THIS " .  $EXCHANGE_NAME;
+                // echo "<br> KEY: $key";
+                return "$key";
+            }
+        }
+        return "Not find";
+    }else{
+        return "Not find";
     }
-    return "Not find";
 }
 
 function MinimumBuyOrderObject($orders){
