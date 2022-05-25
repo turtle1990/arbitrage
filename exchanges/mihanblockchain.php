@@ -3,7 +3,7 @@
 function Mihanblockchain($coin){
 
     $html_site = file_get_html("https://mihanblockchain.com/exchange-prices");
-    $js_finder = substr($html_site, strpos($html_site, 'https://mihanblockchain.com/wp-content/cache/min/1/')+51, 32);
+    $js_finder = substr($html_site, strpos($html_site, '<script src="https://mihanblockchain.com/wp-content/cache/min/1/')+64, 32);
 
     $js = file_get_html("https://mihanblockchain.com/wp-content/cache/min/1/$js_finder.js");
     $activator = substr($js, strpos($js, '"Nonce":"')+9, 10);
@@ -51,37 +51,42 @@ function Mihanblockchain($coin){
 
     // print_r ($orders);
 
-    if($orders !== FALSE){
+    if($orders != FALSE){
 
         $response_data = json_decode($orders);
         
-        echo "<br>Mihanblockchain<br><pre>";
-        print_r($response_data->Exchanges);
-        echo "</pre>";
+        // echo "<br>Mihanblockchain<br><pre>";
+        // print_r($response_data->Exchanges);
+        // echo "</pre>";
 
-        foreach($response_data->Exchanges as $exchange_name){
-            echo " ";
-            $index = searchByExchangeName($exchange_name->id, $exchange_finance);
-            $i = sizeof($exchange);
+            foreach($response_data->Exchanges as $exc){
+                
+                $i = sizeof($exchange);
+                
+                $index = "Not find";
 
-            if ($index == "Not find"){
-                echo "<br> Not Find: " . $exchange_name->id;
-                $exchange[$i][0] = $exchange_name->id;
-                $exchange[$i][1] = $coin;
-                $exchange[$i][2] = intval($exchange_name->best_asks_price * 10);
-                $exchange[$i][3] = intval($exchange_name->best_bids_price * 10);
-                $exchange[$i][4] = 0;
-                $exchange[$i][5] = 0;
-                $exchange[$i][6] = 0; //Flag
-                $exchange[$i][7] = 0; //Gap
-                $exchange[$i][8] = Fee_table($coin);
+                if ($exchange != NULL){
+                    $index = searchByExchangeName($exc->id, $exchange);
+                }
 
-            }else{
+                if ($index == "Not find"){
+                    echo "<br> Not Find: " . $exc->id;
+                    $exchange[$i][0] = $exc->id;
+                    $exchange[$i][1] = $coin;
+                    $exchange[$i][2] = intval($exc->best_asks_price * 10);
+                    $exchange[$i][3] = intval($exc->best_bids_price * 10);
+                    $exchange[$i][4] = 0;
+                    $exchange[$i][5] = 0;
+                    $exchange[$i][6] = 0; //Flag
+                    $exchange[$i][7] = 0; //Gap
+                    $exchange[$i][8] = Fee_table($coin);
 
-                echo "<br> FIND: " . $exchange_finance[$index]['ID'] . " Name: " . $exchange_finance[$index]['EXCHANGE_NAME'];
+                }else{
 
+                    echo "<br> FIND: " . $$exchange[$i][0];
+
+                }
             }
-        }
     }
 
 }
