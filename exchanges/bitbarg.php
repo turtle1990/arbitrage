@@ -56,7 +56,7 @@ function Bitbarg($coin){
         $i = sizeof($exchange);
         $id = GetIndexExchangeByName($exchange_name);
 
-        echo "<br> GetIndexExchangeByName: " . GetIndexExchangeByName($exchange_name);
+        // echo "<br> GetIndexExchangeByName: " . GetIndexExchangeByName($exchange_name);
 
         if ($id == NULL){
             // echo "Not find!";

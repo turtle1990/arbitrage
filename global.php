@@ -34,10 +34,10 @@ function searchByExchangeName($EXCHANGE_NAME, $array) {
                 // echo "<br> THIS: " . $val['EXCHANGE_NAME'];
                 // echo "<br> AND THIS " .  $EXCHANGE_NAME;
                 // echo "<br> KEY: $key";
-                return "$key";
+                return $key;
             }
         }
-        return "Not find";
+        return NULL;
     }elseif(isset($array[0][0])){
 
         foreach ($array as $key => $val) {
@@ -47,12 +47,12 @@ function searchByExchangeName($EXCHANGE_NAME, $array) {
                 // echo "<br> THIS: " . $val['EXCHANGE_NAME'];
                 // echo "<br> AND THIS " .  $EXCHANGE_NAME;
                 // echo "<br> KEY: $key";
-                return "$key";
+                return $key;
             }
         }
-        return "Not find";
+        return NULL;
     }else{
-        return "Not find";
+        return NULL;
     }
 }
 

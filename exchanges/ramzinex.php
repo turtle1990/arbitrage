@@ -79,7 +79,7 @@ function Ramzinex($coin)
 
         // echo "<br> GetIndexExchangeByName: " . GetIndexExchangeByName($exchange_name);
 
-        if ($id == NULL || $id == "") {
+        if ($id == NULL) {
             // echo "Not find!";
             $exchange[$i][0] = $exchange_name;
             $exchange[$i][1] = $coin;

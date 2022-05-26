@@ -7,36 +7,41 @@ function Changekon($coin){
     global $response_data_changekon;
     $response_data = NULL;
 
-    switch($coin){
-        case "ALLTYPE" : $response_data_changekon = json_decode(file_get_contents("https://changekon.com/api/v1/market/depth"));
-            break;
-        case "USDT" : $response_data = $response_data_changekon->USDT_TMN;
-            break;
-        case "XRP" : $response_data = $response_data_changekon->XRP_TMN;
-            break;
-        case "DOT" : $response_data = $response_data_changekon->DOT_TMN;
-            break;
-        case "DOGE" : $response_data = $response_data_changekon->DOGE_TMN;
-            break;
-        case "XLM" : $response_data = $response_data_changekon->XLM_TMN;
-            break;
-        case "EOS" : $response_data = $response_data_changekon->EOS_TMN;
-            break;
-        case "TRX" : $response_data = $response_data_changekon->TRX_TMN;
-            break;
-        case "ADA" : $response_data = $response_data_changekon->ADA_TMN;
-            break;
-        case "BNB" : $response_data = $response_data_changekon->BNB_TMN;
-            break;
-        case "MATIC" : $response_data = $response_data_changekon->MATIC_TMN;
-            break;
-        case "DAI" : $response_data = NULL;
-            break;
-        case "LTC" : $response_data = $response_data_changekon->LTC_TMN;
-            break;
-        default : $response_data = Telegram("Invalid Input!");
+    $orders = @file_get_contents("https://changekon.com/api/v1/market/depth");
+
+    if($orders !== FALSE){
+        switch($coin){
+            case "ALLTYPE" : $response_data_changekon = json_decode($orders);
+                break;
+            case "USDT" : $response_data = $response_data_changekon->USDT_TMN;
+                break;
+            case "XRP" : $response_data = $response_data_changekon->XRP_TMN;
+                break;
+            case "DOT" : $response_data = $response_data_changekon->DOT_TMN;
+                break;
+            case "DOGE" : $response_data = $response_data_changekon->DOGE_TMN;
+                break;
+            case "XLM" : $response_data = $response_data_changekon->XLM_TMN;
+                break;
+            case "EOS" : $response_data = $response_data_changekon->EOS_TMN;
+                break;
+            case "TRX" : $response_data = $response_data_changekon->TRX_TMN;
+                break;
+            case "ADA" : $response_data = $response_data_changekon->ADA_TMN;
+                break;
+            case "BNB" : $response_data = $response_data_changekon->BNB_TMN;
+                break;
+            case "MATIC" : $response_data = $response_data_changekon->MATIC_TMN;
+                break;
+            case "DAI" : $response_data = NULL;
+                break;
+            case "LTC" : $response_data = $response_data_changekon->LTC_TMN;
+                break;
+            default : $response_data = Telegram("Invalid Input!");
+        }
     }
 
+    // print_r($response_data);
     if($response_data != NULL){
         
         $asks = $response_data->asks;

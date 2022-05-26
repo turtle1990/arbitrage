@@ -36,8 +36,8 @@ function Bitimen($coin){
 
     $orders = @file_get_contents($api_url);
 
-    echo "<br>CHECK ISSUE OF BITIMEN<br>";
-    print_r($orders);
+    // echo "<br>CHECK ISSUE OF BITIMEN<br>";
+    // print_r($orders);
 
     if($orders !== FALSE){
 
