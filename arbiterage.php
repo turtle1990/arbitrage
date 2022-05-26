@@ -31,6 +31,14 @@ function Arbitrge($want_arbitrage_percent)
     $exchange = Exclude($exchange,"Ompfinex","DAI");
     // Wallex: coin DAI Dosn't exist;
     $exchange = Exclude($exchange,"Wallex","DAI");
+    // Lopiro: coin USDT is ERC-20;
+    $exchange = Exclude($exchange,"Lopiro","USDT");
+    // Salamcrypto: coin DAI last update for a long time ago
+    $exchange = Exclude($exchange,"Salamcrypto","DAI");
+    // Exchaino: coin EOS last update for a long time ago
+    $exchange = Exclude($exchange,"Exchaino","EOS");
+    // Coinkade: coin DAI is deactive.
+    $exchange = Exclude($exchange,"Coinkade","DAI");
 
     //detect gap
     $exchange = Gap($exchange,$want_arbitrage_percent);
