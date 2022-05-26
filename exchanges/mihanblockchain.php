@@ -35,7 +35,7 @@ function Mihanblockchain($coin){
             break;
         case "BNB" : $api_url .= "bnb";
             break;
-        case "MATIC" : $api_url .= "matic";
+        case "MATIC" : $api_url .= NULL;
             break;
         case "DAI" : $api_url .= "dai";
             break;
@@ -47,11 +47,11 @@ function Mihanblockchain($coin){
 
     // print $api_url;
 
-    $orders = file_get_contents($api_url);
+    $orders = @file_get_contents($api_url);
 
     // print_r ($orders);
 
-    if($orders != FALSE){
+    if($orders != FALSE && $coin != 'MATIC'){
 
         $response_data = json_decode($orders);
         
@@ -63,13 +63,15 @@ function Mihanblockchain($coin){
                 
                 $i = sizeof($exchange);
                 
-                $index = "Not find";
+                $index = NULL;
 
                 if ($exchange != NULL){
                     $index = searchByExchangeName($exc->id, $exchange);
+                    echo "<br>";
+                    echo "<b>index: " .$index . " Name: " .$exc->id . "</b>";
                 }
 
-                if ($index == "Not find"){
+                if ($index == NULL){
                     echo "<br> Not Find: " . $exc->id;
                     $exchange[$i][0] = $exc->id;
                     $exchange[$i][1] = $coin;
@@ -83,7 +85,7 @@ function Mihanblockchain($coin){
 
                 }else{
 
-                    echo "<br> FIND: " . $$exchange[$i][0];
+                    echo "<br> FIND or New: " . $exc->id;
 
                 }
             }

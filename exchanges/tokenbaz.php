@@ -113,7 +113,7 @@ function Tokenbaz($coin)
             }
         }
 
-        echo "<br>Number of Exchange: ". $coin . " " .  $i . "<br>";
+        // echo "<br>Number of Exchange: ". $coin . " " .  $i . "<br>";
 
         return $exchange;
 

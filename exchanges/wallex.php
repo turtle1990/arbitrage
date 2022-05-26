@@ -50,7 +50,7 @@ function Wallex($coin){
         $best_buyyer = MinimumBuyOrderArrayWallexRIAL($response_data->result->bid)[0];
         $amount_best_buyyer = MinimumBuyOrderArrayWallexRIAL($response_data->result->bid)[1];
 
-        echo "<br>Wallex: Best seller: $best_seller , Amount: $amount_best_seller <br>Best buyyer: $best_buyyer , Amount: $amount_best_buyyer";
+        // echo "<br>Wallex: Best seller: $best_seller , Amount: $amount_best_seller <br>Best buyyer: $best_buyyer , Amount: $amount_best_buyyer";
 
         $i = sizeof($exchange);
         $id = GetIndexExchangeByName($exchange_name);
