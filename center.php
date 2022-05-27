@@ -51,8 +51,8 @@
 
         $time_start = microtime(true); 
 
-        // $coins = array("USDT","XRP","DOT","XLM","TRX","BNB","MATIC","LTC","EOS","DOGE","ADA","DAI");
-        $coins = array("USDT");
+        $coins = array("USDT","XRP","DOT","XLM","TRX","BNB","MATIC","LTC","EOS","DOGE","ADA","DAI");
+        // $coins = array("USDT");
         
         Changekon("ALLTYPE");// one ajax and get all cryptocurrency
         foreach ($coins as $coin){
@@ -70,14 +70,14 @@
             Mihanblockchain($coin);
             Arbitrge(0.68);
             echo "<br>Number of Exchange: ". $coin . " " .  sizeof($exchange) . "<br>";
-            // unset($exchange);
+            unset($exchange);
         }
         
-        echo "<br> Number of Global Exchange: " . sizeof($GLOBALS['exchange']);
+        // echo "<br> Number of Global Exchange: " . sizeof($GLOBALS['exchange']);
 
-        echo "<pre>";
-        print_r($exchange);
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($exchange);
+        // echo "</pre>";
 
         $time_end = microtime(true);
         $execution_time = ($time_end - $time_start);

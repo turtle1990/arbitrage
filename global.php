@@ -37,7 +37,7 @@ function searchByExchangeName($EXCHANGE_NAME, $array) {
                 return $key;
             }
         }
-        return NULL;
+        return false;
     }elseif(isset($array[0][0])){
 
         foreach ($array as $key => $val) {
@@ -50,9 +50,9 @@ function searchByExchangeName($EXCHANGE_NAME, $array) {
                 return $key;
             }
         }
-        return NULL;
+        return false;
     }else{
-        return NULL;
+        return false;
     }
 }
 

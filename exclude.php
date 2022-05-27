@@ -1,10 +1,13 @@
 <?php
 
 function Exclude($exchange,$exchange_name,$coin){
-
+    global $coins;
     for($i = 0; $i < sizeof($exchange); $i++){
         if ($exchange[$i][0] == $exchange_name && $exchange[$i][1] == $coin){
             $exchange [$i][6] = 1; //flag;
+        }
+        if($exchange[$i][0] == $exchange_name && $coin == "ALLTYPE"){
+                $exchange [$i][6] = 1; //flag;
         }
     }
 

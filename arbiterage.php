@@ -39,6 +39,8 @@ function Arbitrge($want_arbitrage_percent)
     $exchange = Exclude($exchange,"Exchaino","EOS");
     // Coinkade: coin DAI is deactive.
     $exchange = Exclude($exchange,"Coinkade","DAI");
+    // Abantether: Not good exchange, approximate price.
+    $exchange = Exclude($exchange,"Abantether","ALLTYPE");
 
     //detect gap
     $exchange = Gap($exchange,$want_arbitrage_percent);

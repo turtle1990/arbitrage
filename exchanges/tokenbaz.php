@@ -92,7 +92,7 @@ function Tokenbaz($coin)
                     break;
                     case "app.ompfinex.com" : $exchange[$i][0] = "Ompfinex";
                     break;
-                    case "jibitex.com" : $exchange[$i][0] = "Jibitext";
+                    case "jibitex.com" : $exchange[$i][0] = "Jibitex";
                     break;
                     case "hamiexchange.com" : $exchange[$i][0] = "Hamiexchange";
                     break;
