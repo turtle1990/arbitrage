@@ -59,38 +59,33 @@ function Mihanblockchain($coin){
         // print_r($response_data->Exchanges);
         // echo "</pre>";
 
-            foreach($response_data->Exchanges as $exc){
-                
-                $i = sizeof($exchange);
-                
-                $index = NULL;
+        foreach($response_data->Exchanges as $exc){
+            
+            $i = sizeof($exchange);
+            
+            $index = NULL;
 
-                if ($exchange != NULL){
-                    $index = searchByExchangeName($exc->id, $exchange);
-                    echo "<br>";
-                    echo "<b>index: " .$index . " Name: " .$exc->id . "</b>";
-                }
-
-                if ($index == NULL){
-                    echo "<br> Not Find: " . $exc->id;
-                    $exchange[$i][0] = $exc->id;
-                    $exchange[$i][1] = $coin;
-                    $exchange[$i][2] = intval($exc->best_asks_price * 10);
-                    $exchange[$i][3] = intval($exc->best_bids_price * 10);
-                    $exchange[$i][4] = 0;
-                    $exchange[$i][5] = 0;
-                    $exchange[$i][6] = 0; //Flag
-                    $exchange[$i][7] = 0; //Gap
-                    $exchange[$i][8] = Fee_table($coin);
-
-                }else{
-
-                    echo "<br> FIND or New: " . $exc->id;
-
-                }
+            if ($exchange !== false){
+                $index = searchByExchangeName($exc->id, $exchange);
+                // echo "<br>";
+                // echo "<b>index: " .$index . " Name: " .$exc->id . "</b>";
             }
-    }
 
+            if ($index === false){
+                // echo "<br> Not Find: " . $exc->id;
+                $exchange[$i][0] = $exc->id;
+                $exchange[$i][1] = $coin;
+                $exchange[$i][2] = intval($exc->best_asks_price * 10);
+                $exchange[$i][3] = intval($exc->best_bids_price * 10);
+                $exchange[$i][4] = 0;
+                $exchange[$i][5] = 0;
+                $exchange[$i][6] = 0; //Flag
+                $exchange[$i][7] = 0; //Gap
+                $exchange[$i][8] = Fee_table($coin);
+
+            }
+        }
+    }
 }
 
 ?>
